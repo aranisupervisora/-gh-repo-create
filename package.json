@@ -1,0 +1,11 @@
+{
+  "name": "gh-repo-create",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node --check src/index.js",
+    "lint": "node --check src/index.js && node --check tests/main.test.js",
+    "test": "node --test"
+  }
+}

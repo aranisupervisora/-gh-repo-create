@@ -11,3 +11,24 @@ test('calculateTotal returns sum of price * quantity for all items', () => {
 
   assert.equal(calculateTotal(items), 32);
 });
+
+test('calculateTotal throws when input is not an array', () => {
+  assert.throws(
+    () => calculateTotal(null),
+    /items must be an array/
+  );
+});
+
+test('calculateTotal throws when an item is not an object', () => {
+  assert.throws(
+    () => calculateTotal([1]),
+    /item at index 0 must be an object/
+  );
+});
+
+test('calculateTotal throws when price or quantity is not finite', () => {
+  assert.throws(
+    () => calculateTotal([{ price: 10, quantity: Number.NaN }]),
+    /item at index 0 must include finite price and quantity numbers/
+  );
+});

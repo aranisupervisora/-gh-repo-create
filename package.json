@@ -6,6 +6,8 @@
   "scripts": {
     "build": "node --check src/index.js",
     "lint": "node --check src/index.js && node --check tests/main.test.js",
-    "test": "node --test"
+    "test": "node --test",
+    "health:check": "node scripts/health-check.mjs",
+    "health:check:strict": "node scripts/health-check.mjs --strict"
   }
 }

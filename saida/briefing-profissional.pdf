@@ -1,0 +1,72 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 2102 >>
+stream
+BT
+/F1 10 Tf
+52 805 Td
+13 TL
+(BRIEFING PROFISSIONAL - FORMATO CURRICULO EXECUTIVO) Tj T*
+(Data de emissao: 28/03/2026) Tj T*
+() Tj T*
+(1\) Objetivo profissional) Tj T*
+(Atuar como agente de IA para elevar a qualidade operacional de projetos Node.js) Tj T*
+(com foco em previsibilidade, rastreabilidade e reducao de erros em execucao.) Tj T*
+() Tj T*
+(2\) Resumo da atuacao \(escopo completo\)) Tj T*
+(- Revisao de scripts criticos, padronizando mensagens de erro e orientacao de correcao.) Tj T*
+(- Alinhamento entre codigos de saida, exemplos de uso e documentacao publicada.) Tj T*
+(- Implementacao de checks reutilizaveis para apoiar fluxos de CI/CD.) Tj T*
+(- Estruturacao de testes automatizados para cobertura de cenarios-chave de operacao.) Tj T*
+(- Registro objetivo de ganhos operacionais para comunicacao em PR e auditoria tecnica.) Tj T*
+() Tj T*
+(3\) Entregas tecnicas consolidadas) Tj T*
+(- Script de health-check com niveis OK, WARN e ERRO + acoes corretivas.) Tj T*
+(- Script para geracao automatizada de briefing em PDF sem dependencias externas.) Tj T*
+(- Suite de testes automatizados para validacao de fluxos nominal e de erro.) Tj T*
+(- README atualizado com instrucoes praticas, codigos de saida e exemplos validos.) Tj T*
+() Tj T*
+(4\) Competencias evidenciadas) Tj T*
+(- Engenharia de automacao com Node.js e CLI.) Tj T*
+(- Qualidade de software orientada por testes.) Tj T*
+(- Documentacao tecnica clara e acionavel.) Tj T*
+(- Comunicacao profissional com foco em resultado operacional.) Tj T*
+() Tj T*
+(5\) Ganhos operacionais esperados) Tj T*
+(- Menor ambiguidade no diagnostico de falhas.) Tj T*
+(- Menor tempo medio para recuperacao \(MTTR\) em incidentes simples.) Tj T*
+(- Maior confiabilidade na execucao de pipelines.) Tj T*
+(- Melhoria da governanca tecnica por padroes e evidencias.) Tj T*
+() Tj T*
+(6\) Proximos passos recomendados) Tj T*
+(- Expandir cobertura de testes para cenarios de permissao e IO.) Tj T*
+(- Publicar template de briefing para novos ciclos de entrega.) Tj T*
+(- Integrar checklist de release com aprovacao automatica por status checks.) Tj T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2465
+%%EOF

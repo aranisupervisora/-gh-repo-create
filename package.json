@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node --check scripts/health-check.mjs && node --check tests/health-check.test.mjs",
-    "lint": "node --check scripts/health-check.mjs && node --check tests/health-check.test.mjs",
-    "test": "node --test tests/health-check.test.mjs",
+    "build": "node --check scripts/health-check.mjs && node --check scripts/generate-briefing-pdf.mjs && node --check tests/health-check.test.mjs && node --check tests/generate-briefing-pdf.test.mjs",
+    "lint": "node --check scripts/health-check.mjs && node --check scripts/generate-briefing-pdf.mjs && node --check tests/health-check.test.mjs && node --check tests/generate-briefing-pdf.test.mjs",
+    "test": "node --test tests/health-check.test.mjs tests/generate-briefing-pdf.test.mjs",
     "health:check": "node scripts/health-check.mjs",
-    "health:check:strict": "node scripts/health-check.mjs --strict"
+    "health:check:strict": "node scripts/health-check.mjs --strict",
+    "briefing:pdf": "node scripts/generate-briefing-pdf.mjs"
   }
 }

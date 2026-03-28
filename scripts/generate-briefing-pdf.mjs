@@ -29,37 +29,62 @@ function escapePdfText(text) {
   return text.replaceAll('\\', '\\\\').replaceAll('(', '\\(').replaceAll(')', '\\)');
 }
 
-function buildBriefingPdfBuffer() {
-  const lines = [
-    'BRIEFING PROFISSIONAL - RESUMO DE ATUACAO',
-    'Data: 28/03/2026',
+function formatDateBR(date = new Date()) {
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const year = date.getUTCFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+function buildBriefingLines() {
+  return [
+    'BRIEFING PROFISSIONAL - FORMATO CURRICULO EXECUTIVO',
+    `Data de emissao: ${formatDateBR()}`,
     '',
-    'Objetivo',
-    'Apresentar atuacao tecnica com foco em qualidade operacional e automacao.',
+    '1) Objetivo profissional',
+    'Atuar como agente de IA para elevar a qualidade operacional de projetos Node.js',
+    'com foco em previsibilidade, rastreabilidade e reducao de erros em execucao.',
     '',
-    'Resumo de atuacao',
-    '- Revisao final de scripts e documentacao com padrao de mensagens acionaveis.',
-    '- Padronizacao de codigos de saida e alinhamento com exemplos operacionais.',
-    '- Estruturacao de testes automatizados para reduzir regressao em CI/CD.',
-    '- Registro de ganhos operacionais com foco em previsibilidade de diagnostico.',
+    '2) Resumo da atuacao (escopo completo)',
+    '- Revisao de scripts criticos, padronizando mensagens de erro e orientacao de correcao.',
+    '- Alinhamento entre codigos de saida, exemplos de uso e documentacao publicada.',
+    '- Implementacao de checks reutilizaveis para apoiar fluxos de CI/CD.',
+    '- Estruturacao de testes automatizados para cobertura de cenarios-chave de operacao.',
+    '- Registro objetivo de ganhos operacionais para comunicacao em PR e auditoria tecnica.',
     '',
-    'Competencias evidenciadas',
-    '- Confiabilidade de tooling Node.js',
-    '- Qualidade de documentacao tecnica',
-    '- Testes e validacao automatizada',
-    '- Comunicacao tecnica orientada a acao',
+    '3) Entregas tecnicas consolidadas',
+    '- Script de health-check com niveis OK, WARN e ERRO + acoes corretivas.',
+    '- Script para geracao automatizada de briefing em PDF sem dependencias externas.',
+    '- Suite de testes automatizados para validacao de fluxos nominal e de erro.',
+    '- README atualizado com instrucoes praticas, codigos de saida e exemplos validos.',
     '',
-    'Proximos passos recomendados',
-    '- Evoluir cobertura de testes para cenarios de erro adicionais.',
-    '- Integrar checks no pipeline de pull request.',
-    '- Versionar checklist operacional no repositorio.',
+    '4) Competencias evidenciadas',
+    '- Engenharia de automacao com Node.js e CLI.',
+    '- Qualidade de software orientada por testes.',
+    '- Documentacao tecnica clara e acionavel.',
+    '- Comunicacao profissional com foco em resultado operacional.',
+    '',
+    '5) Ganhos operacionais esperados',
+    '- Menor ambiguidade no diagnostico de falhas.',
+    '- Menor tempo medio para recuperacao (MTTR) em incidentes simples.',
+    '- Maior confiabilidade na execucao de pipelines.',
+    '- Melhoria da governanca tecnica por padroes e evidencias.',
+    '',
+    '6) Proximos passos recomendados',
+    '- Expandir cobertura de testes para cenarios de permissao e IO.',
+    '- Publicar template de briefing para novos ciclos de entrega.',
+    '- Integrar checklist de release com aprovacao automatica por status checks.',
   ];
+}
+
+function buildBriefingPdfBuffer() {
+  const lines = buildBriefingLines();
 
   const content = [
     'BT',
-    '/F1 12 Tf',
-    '72 770 Td',
-    '16 TL',
+    '/F1 10 Tf',
+    '52 805 Td',
+    '13 TL',
     ...lines.map((line) => `(${escapePdfText(line)}) Tj T*`),
     'ET',
   ].join('\n');
@@ -67,7 +92,7 @@ function buildBriefingPdfBuffer() {
   const objects = [
     '1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n',
     '2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n',
-    '3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>\nendobj\n',
+    '3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>\nendobj\n',
     '4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n',
     `5 0 obj\n<< /Length ${Buffer.byteLength(content, 'utf8')} >>\nstream\n${content}\nendstream\nendobj\n`,
   ];
@@ -97,7 +122,7 @@ function buildBriefingPdfBuffer() {
 function printHelp() {
   console.log('Uso: node scripts/generate-briefing-pdf.mjs [caminho-de-saida.pdf]');
   console.log('');
-  console.log('Gera um briefing profissional em formato PDF.');
+  console.log('Gera um briefing profissional em PDF (formato curriculo executivo).');
   console.log(`Saida padrao: ${DEFAULT_OUTPUT}`);
 }
 

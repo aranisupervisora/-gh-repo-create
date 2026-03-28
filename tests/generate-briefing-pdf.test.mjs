@@ -29,6 +29,22 @@ test('gera PDF com assinatura válida', async () => {
   }
 });
 
+test('gera PDF mesmo com diretório de saída inexistente', async () => {
+  const baseDir = mkdtempSync(join(tmpdir(), 'briefing-pdf-nested-'));
+  const outputFile = join(baseDir, 'relatorios', 'briefing-final.pdf');
+
+  try {
+    const result = runGenerator([outputFile]);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /OK: briefing gerado em/);
+
+    const content = readFileSync(outputFile);
+    assert.match(content.toString('utf8', 0, 8), /^%PDF-1\./);
+  } finally {
+    await rm(baseDir, { recursive: true, force: true });
+  }
+});
+
 test('retorna 2 em uso inválido', () => {
   const result = runGenerator(['a.pdf', 'b.pdf']);
   assert.equal(result.status, 2);

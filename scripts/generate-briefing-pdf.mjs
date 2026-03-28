@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
 import process from 'node:process';
 
 const EXIT = {
@@ -142,12 +143,13 @@ async function main() {
 
   try {
     const pdfBuffer = buildBriefingPdfBuffer();
+    await mkdir(dirname(args.outputPath), { recursive: true });
     await writeFile(args.outputPath, pdfBuffer);
     console.log(`OK: briefing gerado em ${args.outputPath}.`);
     process.exit(EXIT.OK);
   } catch (error) {
     console.error('ERRO: não foi possível gerar o arquivo PDF.');
-    console.error('Ação corretiva: Verifique permissão de escrita no diretório de destino.');
+    console.error('Ação corretiva: Verifique permissões e se o caminho de destino é válido.');
     console.error(`Detalhe técnico: ${error.message}`);
     process.exit(EXIT.EXECUTION_ERROR);
   }

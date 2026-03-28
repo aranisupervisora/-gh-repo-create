@@ -30,6 +30,8 @@ Também é possível definir caminho de saída:
 node scripts/generate-briefing-pdf.mjs ./saida/briefing-profissional.pdf
 ```
 
+Se o diretório informado não existir, ele será criado automaticamente.
+
 ## Legenda de códigos de saída
 
 ### `health-check`

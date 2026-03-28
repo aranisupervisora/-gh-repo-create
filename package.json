@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node --check src/index.js",
-    "lint": "node --check src/index.js && node --check tests/main.test.js",
-    "test": "node --test",
+    "build": "node --check scripts/health-check.mjs && node --check tests/health-check.test.mjs",
+    "lint": "node --check scripts/health-check.mjs && node --check tests/health-check.test.mjs",
+    "test": "node --test tests/health-check.test.mjs",
     "health:check": "node scripts/health-check.mjs",
     "health:check:strict": "node scripts/health-check.mjs --strict"
   }

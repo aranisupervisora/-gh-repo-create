@@ -11,9 +11,10 @@ const EXIT_CODES = {
 };
 
 const VALID_FIX_ACTIONS = {
-  'add-script': "Adicione o script ausente em package.json > scripts.",
-  'set-type-module': "Defina \"type\": \"module\" no package.json.",
-  'set-private-true': "Defina \"private\": true no package.json para evitar publicação acidental.",
+  'add-script': 'Adicione o script ausente em package.json > scripts.',
+  'set-type-module': 'Defina "type": "module" no package.json.',
+  'set-private-true': 'Defina "private": true no package.json para evitar publicação acidental.',
+  'resolve-strict-warnings': 'Corrija os avisos acima e execute novamente (ou rode sem --strict para diagnóstico incremental).',
 };
 
 function parseArgs(argv) {
@@ -46,7 +47,7 @@ function printHelp() {
   console.log(`  ${EXIT_CODES.OK} = OK (nenhum problema encontrado)`);
   console.log(`  ${EXIT_CODES.WARNINGS} = Avisos encontrados (modo padrão)`);
   console.log(`  ${EXIT_CODES.INVALID_USAGE} = Uso inválido (flag desconhecida)`);
-  console.log(`  ${EXIT_CODES.EXECUTION_ERROR} = Erro de execução (arquivo inválido/indisponível)`);
+  console.log(`  ${EXIT_CODES.EXECUTION_ERROR} = Falha em --strict ou erro de execução`);
   console.log('');
   console.log('Exemplos:');
   console.log('  node scripts/health-check.mjs');
@@ -90,7 +91,11 @@ async function runHealthCheck(strict) {
   warnings.forEach((issue) => emitIssue('WARN', issue.message, issue.fixAction));
 
   if (strict) {
-    console.error('ERRO: modo --strict ativo; avisos tratados como falha.');
+    emitIssue(
+      'ERRO',
+      'Modo --strict ativo; avisos tratados como falha.',
+      VALID_FIX_ACTIONS['resolve-strict-warnings'],
+    );
     return EXIT_CODES.EXECUTION_ERROR;
   }
 
